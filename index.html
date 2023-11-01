@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Kalkulator</h1>
+        <input type="text" v-model="num1" placeholder="Angka 1">
+        <input type="text" v-model="num2" placeholder="Angka 2">
+        <button @click="add">+</button>
+        <button @click="subtract">-</button>
+        <button @click="multiply">*</button>
+        <button @click="divide">/</button>
+        <p>Hasil: {{ result }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num1: '',
+                num2: '',
+                result: 0
+            },
+            methods: {
+                add: function() {
+                    this.result = parseFloat(this.num1) + parseFloat(this.num2);
+                },
+                subtract: function() {
+                    this.result = parseFloat(this.num1) - parseFloat(this.num2);
+                },
+                multiply: function() {
+                    this.result = parseFloat(this.num1) * parseFloat(this.num2);
+                },
+                divide: function() {
+                    if (parseFloat(this.num2) !== 0) {
+                        this.result = parseFloat(this.num1) / parseFloat(this.num2);
+                    } else {
+                        this.result = 'Undefined (division by zero)';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
